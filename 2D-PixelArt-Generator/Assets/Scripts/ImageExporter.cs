@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -29,18 +31,24 @@ public static class ImageExporter
 
     private static void SaveOnWindows(Sprite sprite, string fileName)
     {
-        DirectoryInfo dir = new DirectoryInfo(EditorUtility.SaveFilePanel
-        (
-            "Save texture as PNG",
-            "",
-            fileName,
-            "png"
-        ));
-        string path = dir.FullName;
+        //DirectoryInfo dir = new DirectoryInfo(EditorUtility.SaveFilePanel
+        //(
+        //    "Save texture as PNG",
+        //    "",
+        //    fileName,
+        //    "png"
+        //));
+        //string path = dir.FullName;
 
-        if (string.IsNullOrEmpty(path))
-            return;
+        //if (string.IsNullOrEmpty(path))
+        //    return;
 
-        File.WriteAllBytes(path, ImageConversion.EncodeToPNG(sprite.texture));
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\PixelArtGenerator";
+        string filePath = Path.Combine(path, fileName);
+        Directory.CreateDirectory(path);
+
+        File.WriteAllBytes(filePath, ImageConversion.EncodeToPNG(sprite.texture));
+
+        Process.Start("explorer.exe", "/select, " + filePath);
     }
 }
