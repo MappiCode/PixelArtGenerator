@@ -6,15 +6,14 @@ using UnityEngine;
 
 public static class ImageExporter
 {
-    private static int counter = 0;
-
+    public static ImageSettings ImageParameters;
     /// <summary>
     /// Speichert den Sprite sprite als .png-Datei in den Assets-Ordner des Projekts ab.
     /// </summary>
     /// <param name="sprite">Der zu speichernde Sprite</param>
     public static void SaveSpriteToAssets(Sprite sprite)
     {
-        string fileName = "PixelArt" + counter++ + ".png";
+        string fileName = "PixelArt" + ImageParameters.Seed + ".png";
 
         switch (Application.platform)
         {

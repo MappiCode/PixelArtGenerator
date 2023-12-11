@@ -62,6 +62,7 @@ public class ImageSettings : MonoBehaviour
                 < 0 => -value,
                 _ => value,
             };
+            Initialize();
         }
     }
 
@@ -138,6 +139,7 @@ public class ImageSettings : MonoBehaviour
 
     private void Awake()
     {
+        ImageExporter.ImageParameters = this;
         Randomise();
     }
 
@@ -188,6 +190,7 @@ public class ImageSettings : MonoBehaviour
 
     public void RandomiseSunRadius()
     {
-        SunRadius = Random.Range(MIN_SUNRADIUS, MAX_SUNRADIUS + 1);
+        int maxRadius = width/4 < MAX_SUNRADIUS ? width/4 : MAX_SUNRADIUS;
+        SunRadius = Random.Range(MIN_SUNRADIUS, maxRadius + 1);
     }
 }
