@@ -139,7 +139,7 @@ public class ImageSettings : MonoBehaviour
 
     private void Awake()
     {
-        ImageExporter.ImageParameters = this;
+        ImageExporter.imageSettings = this;
         Randomise();
     }
 
