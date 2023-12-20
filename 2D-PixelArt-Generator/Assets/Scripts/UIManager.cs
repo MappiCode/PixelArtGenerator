@@ -51,8 +51,6 @@ public class UIManager : MonoBehaviour
     private Button randomiseButton;
     [SerializeField]
     private Button regenerateButton;
-    [SerializeField]
-    private Button exportButton;
 
     [Header("Randomiser Buttons")]
     [SerializeField]
@@ -80,7 +78,6 @@ public class UIManager : MonoBehaviour
         color2Button.onClick.AddListener(() => colorPicker.SetActive(true));
         randomiseButton.onClick.AddListener(RandomiseClicked);
         regenerateButton.onClick.AddListener(RegenerateClicked);
-        exportButton.onClick.AddListener(ExportClicked);
 
         //Input Fields
         seedInput.onValueChanged.AddListener(seed => imageSettings.Seed = ValidateInput(seed));
@@ -213,15 +210,6 @@ public class UIManager : MonoBehaviour
         Sprite sprite = spriteGenerator.Generate();
         UpdateInputs();
         spriteLoader.LoadSprite(sprite);
-    }
-
-    /// <summary>
-    /// Stößt den Export-Vorgang an
-    /// </summary>
-    private void ExportClicked()
-    {
-        Sprite sprite = spriteLoader.GetCurrentSprite();
-        ImageExporter.SaveSpriteToAssets(sprite);
     }
 
     /// <summary>
