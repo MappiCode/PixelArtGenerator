@@ -41,11 +41,10 @@ public static class ImageExporter
     /// Speichert den Sprite sprite als .png-Datei mithilfe des StandaloneFileBrowser von Gökhan Gökçe ab.
     /// </summary>
     /// <param name="sprite">Der zu speichernde Sprite</param>
-    public static void SaveSpriteToAssets(Sprite sprite)
+    public static void ExortSprite(Sprite sprite)
     {
-        byte[] textureBytes = sprite.texture.EncodeToPNG();
         string fileName = "PixelArt" + imageSettings.Seed + ".png";
-        DownloadFile( "", "OnFileDownload", fileName, textureBytes, textureBytes.Length);
+        DownloadFile("", "OnFileDownload", fileName, sprite.texture.EncodeToPNG(), textureBytes.Length);
     }
 #else
     //Standalone & editor
@@ -53,7 +52,7 @@ public static class ImageExporter
     /// Speichert den Sprite sprite als .png-Datei mithilfe des StandaloneFileBrowser von Gökhan Gökçe ab.
     /// </summary>
     /// <param name="sprite">Der zu speichernde Sprite</param>
-    public static void SaveSpriteToAssets(Sprite sprite)
+    public static void ExortSprite(Sprite sprite)
     {
         string fileName = "PixelArt" + imageSettings.Seed;
         string path = StandaloneFileBrowser.SaveFilePanel("Save image", "", fileName, "png");

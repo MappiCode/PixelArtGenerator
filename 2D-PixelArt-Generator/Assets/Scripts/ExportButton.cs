@@ -12,6 +12,6 @@ public class ExportButton : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        ImageExporter.SaveSpriteToAssets(spriteImage.sprite);
+        ImageExporter.ExortSprite(spriteImage.sprite);
     }
 }
