@@ -44,7 +44,8 @@ public static class ImageExporter
     public static void ExortSprite(Sprite sprite)
     {
         string fileName = "PixelArt" + imageSettings.Seed + ".png";
-        DownloadFile("", "OnFileDownload", fileName, sprite.texture.EncodeToPNG(), textureBytes.Length);
+        byte[] textureBytes = sprite.texture.EncodeToPNG();
+        DownloadFile("", "OnFileDownload", fileName, textureBytes, textureBytes.Length);
     }
 #else
     //Standalone & editor
